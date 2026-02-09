@@ -1,5 +1,6 @@
 import React from 'react';
 import { UserSearch, ShoppingCart, Megaphone, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export function ServicesGrid() {
   const services = [
@@ -11,6 +12,7 @@ export function ServicesGrid() {
       color: 'text-primary',
       bgColor: 'bg-primary/10',
       tagColor: 'text-primary',
+      href: '/jobs',
     },
     {
       title: 'Kisan Marketplace',
@@ -20,6 +22,7 @@ export function ServicesGrid() {
       color: 'text-orange-600',
       bgColor: 'bg-orange-100/50 dark:bg-orange-900/20',
       tagColor: 'text-orange-600',
+      href: '#',
     },
     {
       title: 'Panchayat Connect',
@@ -29,6 +32,7 @@ export function ServicesGrid() {
       color: 'text-red-600',
       bgColor: 'bg-red-100/50 dark:bg-red-900/20',
       tagColor: 'text-red-600',
+      href: '#',
     }
   ];
 
@@ -40,8 +44,9 @@ export function ServicesGrid() {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {services.map((service, idx) => (
-          <div 
+          <Link 
             key={idx} 
+            href={service.href}
             className="group cursor-pointer bg-white dark:bg-zinc-800 rounded-3xl p-8 border border-primary/10 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all flex flex-col h-full"
           >
             <div className={`w-16 h-16 ${service.bgColor} rounded-2xl flex items-center justify-center mb-6 ${service.color}`}>
@@ -57,7 +62,7 @@ export function ServicesGrid() {
                 <ArrowRight size={20} />
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
