@@ -1,0 +1,53 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "rice",
+      "description": "Premium Basmati Rice",
+      "imageUrl": "https://picsum.photos/seed/rice/600/400",
+      "imageHint": "rice grains"
+    },
+    {
+      "id": "coconuts",
+      "description": "Fresh Tender Coconuts",
+      "imageUrl": "https://picsum.photos/seed/coconut/600/400",
+      "imageHint": "tender coconut"
+    },
+    {
+      "id": "tomatoes",
+      "description": "Organic Tomatoes",
+      "imageUrl": "https://picsum.photos/seed/tomato/600/400",
+      "imageHint": "fresh tomatoes"
+    },
+    {
+      "id": "wheat",
+      "description": "Fresh Harvested Wheat",
+      "imageUrl": "https://picsum.photos/seed/wheat/600/400",
+      "imageHint": "wheat harvest"
+    },
+    {
+      "id": "chilies",
+      "description": "Green Chilies",
+      "imageUrl": "https://picsum.photos/seed/chili/600/400",
+      "imageHint": "green chilies"
+    },
+    {
+      "id": "potatoes",
+      "description": "Fresh Potatoes",
+      "imageUrl": "https://picsum.photos/seed/potato/600/400",
+      "imageHint": "potatoes sack"
+    },
+    {
+      "id": "honey",
+      "description": "Organic Honey",
+      "imageUrl": "https://picsum.photos/seed/honey/600/400",
+      "imageHint": "honey jars"
+    },
+    {
+      "id": "cauliflower",
+      "description": "Fresh Cauliflower",
+      "imageUrl": "https://picsum.photos/seed/cauli/600/400",
+      "imageHint": "cauliflower vegetable"
+    }
+  ]
+}

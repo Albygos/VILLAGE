@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { UserSearch, ShoppingCart, Megaphone, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
@@ -22,7 +23,7 @@ export function ServicesGrid() {
       color: 'text-orange-600',
       bgColor: 'bg-orange-100/50 dark:bg-orange-900/20',
       tagColor: 'text-orange-600',
-      href: '#',
+      href: '/marketplace',
     },
     {
       title: 'Panchayat Connect',
