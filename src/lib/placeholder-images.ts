@@ -8,4 +8,6 @@ export type ImagePlaceholder = {
   imageHint: string;
 };
 
-export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
+// Type-safe extraction of the placeholder images array
+const rawData = data as { placeholderImages?: ImagePlaceholder[] };
+export const PlaceHolderImages: ImagePlaceholder[] = rawData.placeholderImages || [];

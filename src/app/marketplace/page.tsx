@@ -218,7 +218,7 @@ export default function MarketplacePage() {
                       <p className="text-[#101911] dark:text-white text-lg font-bold leading-tight">{p.title}</p>
                       <p className="text-[#1c5f20] text-lg font-black leading-tight">₹{p.price}<span className="text-xs font-normal text-slate-500 dark:text-slate-400">{p.unit}</span></p>
                     </div>
-                    <div className="flex items-center gap-1.5 text-[#5d4037] dark:text-[#1c5f20]/70 mb-3">
+                    <div className="flex items-center gap-1.5 text-slate-700 dark:text-[#1c5f20]/70 mb-3">
                       <User size={16} />
                       <p className="text-sm font-medium">{p.farmer}, Village: {p.village}</p>
                     </div>
