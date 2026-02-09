@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { UserSearch, ShoppingCart, Megaphone, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
@@ -33,7 +32,7 @@ export function ServicesGrid() {
       color: 'text-red-600',
       bgColor: 'bg-red-100/50 dark:bg-red-900/20',
       tagColor: 'text-red-600',
-      href: '#',
+      href: '/complaints',
     }
   ];
 
