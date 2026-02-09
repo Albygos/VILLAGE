@@ -18,17 +18,83 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function MarketplacePage() {
   const products = [
-    { title: 'Basmati Rice', price: '65', unit: '/kg', farmer: 'Rajesh', village: 'Khed', image: 'https://picsum.photos/seed/rice/600/400', verified: true },
-    { title: 'Tender Coconuts', price: '40', unit: '/pc', farmer: 'Lakshmi', village: 'Palur', image: 'https://picsum.photos/seed/coconut/600/400', verified: true },
-    { title: 'Organic Tomatoes', price: '30', unit: '/kg', farmer: 'Amit', village: 'Roha', image: 'https://picsum.photos/seed/tomato/600/400', verified: true },
-    { title: 'Fresh Wheat', price: '28', unit: '/kg', farmer: 'Suresh', village: 'Khed', image: 'https://picsum.photos/seed/wheat/600/400', verified: true },
-    { title: 'Green Chilies', price: '15', unit: '/250g', farmer: 'Meena', village: 'Palur', image: 'https://picsum.photos/seed/chili/600/400', verified: false, limited: true },
-    { title: 'Potatoes', price: '22', unit: '/kg', farmer: 'Vijay', village: 'Roha', image: 'https://picsum.photos/seed/potato/600/400', verified: true },
-    { title: 'Organic Honey', price: '450', unit: '/kg', farmer: 'Sunita', village: 'Palur', image: 'https://picsum.photos/seed/honey/600/400', verified: true },
-    { title: 'Cauliflower', price: '40', unit: '/kg', farmer: 'Ramesh', village: 'Khed', image: 'https://picsum.photos/seed/cauli/600/400', verified: false }
+    { 
+      title: 'Basmati Rice', 
+      price: '65', 
+      unit: '/kg', 
+      farmer: 'Rajesh', 
+      village: 'Khed', 
+      image: PlaceHolderImages.find(img => img.id === 'rice')?.imageUrl || '', 
+      verified: true 
+    },
+    { 
+      title: 'Tender Coconuts', 
+      price: '40', 
+      unit: '/pc', 
+      farmer: 'Lakshmi', 
+      village: 'Palur', 
+      image: PlaceHolderImages.find(img => img.id === 'coconuts')?.imageUrl || '', 
+      verified: true 
+    },
+    { 
+      title: 'Organic Tomatoes', 
+      price: '30', 
+      unit: '/kg', 
+      farmer: 'Amit', 
+      village: 'Roha', 
+      image: PlaceHolderImages.find(img => img.id === 'tomatoes')?.imageUrl || '', 
+      verified: true 
+    },
+    { 
+      title: 'Fresh Wheat', 
+      price: '28', 
+      unit: '/kg', 
+      farmer: 'Suresh', 
+      village: 'Khed', 
+      image: PlaceHolderImages.find(img => img.id === 'wheat')?.imageUrl || '', 
+      verified: true 
+    },
+    { 
+      title: 'Green Chilies', 
+      price: '15', 
+      unit: '/250g', 
+      farmer: 'Meena', 
+      village: 'Palur', 
+      image: PlaceHolderImages.find(img => img.id === 'chilies')?.imageUrl || '', 
+      verified: false, 
+      limited: true 
+    },
+    { 
+      title: 'Potatoes', 
+      price: '22', 
+      unit: '/kg', 
+      farmer: 'Vijay', 
+      village: 'Roha', 
+      image: PlaceHolderImages.find(img => img.id === 'potatoes')?.imageUrl || '', 
+      verified: true 
+    },
+    { 
+      title: 'Organic Honey', 
+      price: '450', 
+      unit: '/kg', 
+      farmer: 'Sunita', 
+      village: 'Palur', 
+      image: PlaceHolderImages.find(img => img.id === 'honey')?.imageUrl || '', 
+      verified: true 
+    },
+    { 
+      title: 'Cauliflower', 
+      price: '40', 
+      unit: '/kg', 
+      farmer: 'Ramesh', 
+      village: 'Khed', 
+      image: PlaceHolderImages.find(img => img.id === 'cauliflower')?.imageUrl || '', 
+      verified: false 
+    }
   ];
 
   return (
@@ -121,7 +187,7 @@ export default function MarketplacePage() {
                   {p.verified && (
                     <div className="absolute top-3 left-3 z-10 bg-white/90 dark:bg-[#131f14]/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
                       <BadgeCheck size={14} className="text-[#1c5f20]" />
-                      <span className="text-[10px] font-bold text-[#1c5f20] uppercase tracking-wider">Verified</span>
+                      <span className="text-[10px] font-bold text-[#1c5f20] uppercase tracking-wider">Panchayat Verified</span>
                     </div>
                   )}
                   {p.limited && (
@@ -134,7 +200,7 @@ export default function MarketplacePage() {
                     alt={p.title} 
                     fill 
                     className="object-cover transform group-hover:scale-105 transition-transform duration-500"
-                    data-ai-hint="crop produce"
+                    data-ai-hint="agriculture product"
                   />
                 </div>
                 <div className="flex flex-col px-1 pb-2">
@@ -142,7 +208,7 @@ export default function MarketplacePage() {
                     <p className="text-[#101911] dark:text-white text-lg font-bold leading-tight">{p.title}</p>
                     <p className="text-[#1c5f20] text-lg font-black leading-tight">₹{p.price}<span className="text-xs font-normal text-slate-500 dark:text-slate-400">{p.unit}</span></p>
                   </div>
-                  <div className="flex items-center gap-1.5 text-slate-600 dark:text-[#1c5f20]/70 mb-3">
+                  <div className="flex items-center gap-1.5 text-[#5d4037] dark:text-[#1c5f20]/70 mb-3">
                     <User size={16} />
                     <p className="text-sm font-medium">{p.farmer}, Village: {p.village}</p>
                   </div>
