@@ -28,7 +28,7 @@ export default function MarketplacePage() {
       unit: '/kg', 
       farmer: 'Rajesh', 
       village: 'Khed', 
-      image: PlaceHolderImages.find(img => img.id === 'rice')?.imageUrl || '', 
+      image: PlaceHolderImages.find(img => img.id === 'rice')?.imageUrl || 'https://picsum.photos/seed/rice/600/400', 
       verified: true 
     },
     { 
@@ -37,7 +37,7 @@ export default function MarketplacePage() {
       unit: '/pc', 
       farmer: 'Lakshmi', 
       village: 'Palur', 
-      image: PlaceHolderImages.find(img => img.id === 'coconuts')?.imageUrl || '', 
+      image: PlaceHolderImages.find(img => img.id === 'coconuts')?.imageUrl || 'https://picsum.photos/seed/coconut/600/400', 
       verified: true 
     },
     { 
@@ -46,7 +46,7 @@ export default function MarketplacePage() {
       unit: '/kg', 
       farmer: 'Amit', 
       village: 'Roha', 
-      image: PlaceHolderImages.find(img => img.id === 'tomatoes')?.imageUrl || '', 
+      image: PlaceHolderImages.find(img => img.id === 'tomatoes')?.imageUrl || 'https://picsum.photos/seed/tomato/600/400', 
       verified: true 
     },
     { 
@@ -55,7 +55,7 @@ export default function MarketplacePage() {
       unit: '/kg', 
       farmer: 'Suresh', 
       village: 'Khed', 
-      image: PlaceHolderImages.find(img => img.id === 'wheat')?.imageUrl || '', 
+      image: PlaceHolderImages.find(img => img.id === 'wheat')?.imageUrl || 'https://picsum.photos/seed/wheat/600/400', 
       verified: true 
     },
     { 
@@ -64,7 +64,7 @@ export default function MarketplacePage() {
       unit: '/250g', 
       farmer: 'Meena', 
       village: 'Palur', 
-      image: PlaceHolderImages.find(img => img.id === 'chilies')?.imageUrl || '', 
+      image: PlaceHolderImages.find(img => img.id === 'chilies')?.imageUrl || 'https://picsum.photos/seed/chili/600/400', 
       verified: false, 
       limited: true 
     },
@@ -74,7 +74,7 @@ export default function MarketplacePage() {
       unit: '/kg', 
       farmer: 'Vijay', 
       village: 'Roha', 
-      image: PlaceHolderImages.find(img => img.id === 'potatoes')?.imageUrl || '', 
+      image: PlaceHolderImages.find(img => img.id === 'potatoes')?.imageUrl || 'https://picsum.photos/seed/potato/600/400', 
       verified: true 
     },
     { 
@@ -83,7 +83,7 @@ export default function MarketplacePage() {
       unit: '/kg', 
       farmer: 'Sunita', 
       village: 'Palur', 
-      image: PlaceHolderImages.find(img => img.id === 'honey')?.imageUrl || '', 
+      image: PlaceHolderImages.find(img => img.id === 'honey')?.imageUrl || 'https://picsum.photos/seed/honey/600/400', 
       verified: true 
     },
     { 
@@ -92,7 +92,7 @@ export default function MarketplacePage() {
       unit: '/kg', 
       farmer: 'Ramesh', 
       village: 'Khed', 
-      image: PlaceHolderImages.find(img => img.id === 'cauliflower')?.imageUrl || '', 
+      image: PlaceHolderImages.find(img => img.id === 'cauliflower')?.imageUrl || 'https://picsum.photos/seed/cauli/600/400', 
       verified: false 
     }
   ];
