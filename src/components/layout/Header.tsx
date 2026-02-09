@@ -24,8 +24,8 @@ export function Header() {
             </div>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="#" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Home</Link>
-            <Link href="#" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Services</Link>
+            <Link href="/" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Home</Link>
+            <Link href="/jobs" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Services</Link>
             <Link href="#" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Schemes</Link>
             <Link href="#" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Contact</Link>
           </nav>
