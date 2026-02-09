@@ -24,7 +24,8 @@ export default function MarketplacePage() {
     const found = PlaceHolderImages.find(img => img.id === id);
     return {
       url: found?.imageUrl || `https://picsum.photos/seed/${id}/600/400`,
-      hint: found?.imageHint || 'crop agriculture'
+      hint: found?.imageHint || 'agriculture crop',
+      description: found?.description || 'Agricultural product'
     };
   };
 
@@ -139,12 +140,11 @@ export default function MarketplacePage() {
               <button className="flex items-center justify-center rounded-xl h-10 w-10 bg-[#e9f1ea] dark:bg-[#1c5f20]/10 text-[#101911] dark:text-white">
                 <Bell size={20} />
               </button>
-              <div className="size-10 rounded-full border-2 border-[#1c5f20]/20 overflow-hidden">
+              <div className="size-10 rounded-full border-2 border-[#1c5f20]/20 overflow-hidden relative">
                 <Image 
                   src="https://picsum.photos/seed/user/100/100" 
                   alt="User" 
-                  width={40} 
-                  height={40} 
+                  fill
                   className="object-cover"
                   data-ai-hint="portrait official"
                 />
@@ -219,7 +219,7 @@ export default function MarketplacePage() {
                           <p className="text-[#101911] dark:text-white text-lg font-bold leading-tight">{p.title}</p>
                           <p className="text-[#1c5f20] text-lg font-black leading-tight">₹{p.price}<span className="text-xs font-normal text-slate-500 dark:text-slate-400">{p.unit}</span></p>
                         </div>
-                        <div className="flex items-center gap-1.5 text-slate-700 dark:text-[#1c5f20]/70 mb-3">
+                        <div className="flex items-center gap-1.5 text-accent-brown dark:text-[#1c5f20]/70 mb-3">
                           <User size={16} />
                           <p className="text-sm font-medium">{p.farmer}, Village: {p.village}</p>
                         </div>

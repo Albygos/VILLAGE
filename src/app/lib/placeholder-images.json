@@ -1,53 +1,52 @@
-
 {
   "placeholderImages": [
     {
       "id": "rice",
-      "description": "Premium Basmati Rice",
-      "imageUrl": "https://picsum.photos/seed/rice-crop/600/400",
-      "imageHint": "rice field"
+      "description": "Sacks of premium basmati rice",
+      "imageUrl": "https://picsum.photos/seed/rice/600/400",
+      "imageHint": "rice grains"
     },
     {
       "id": "coconuts",
-      "description": "Fresh Tender Coconuts",
-      "imageUrl": "https://picsum.photos/seed/coconut-crop/600/400",
-      "imageHint": "coconut palm"
+      "description": "Fresh green tender coconuts stacked",
+      "imageUrl": "https://picsum.photos/seed/coconut/600/400",
+      "imageHint": "coconut pile"
     },
     {
       "id": "tomatoes",
-      "description": "Organic Tomatoes",
-      "imageUrl": "https://picsum.photos/seed/tomato-crop/600/400",
-      "imageHint": "tomato plant"
+      "description": "Bright red vine tomatoes on a basket",
+      "imageUrl": "https://picsum.photos/seed/tomato/600/400",
+      "imageHint": "tomato harvest"
     },
     {
       "id": "wheat",
-      "description": "Fresh Harvested Wheat",
-      "imageUrl": "https://picsum.photos/seed/wheat-crop/600/400",
-      "imageHint": "wheat field"
+      "description": "A heap of harvested golden wheat",
+      "imageUrl": "https://picsum.photos/seed/wheat/600/400",
+      "imageHint": "wheat grain"
     },
     {
       "id": "chilies",
-      "description": "Green Chilies",
-      "imageUrl": "https://picsum.photos/seed/chili-crop/600/400",
-      "imageHint": "chili pepper"
+      "description": "Fresh green chilies on a market table",
+      "imageUrl": "https://picsum.photos/seed/chili/600/400",
+      "imageHint": "green chili"
     },
     {
       "id": "potatoes",
-      "description": "Fresh Potatoes",
-      "imageUrl": "https://picsum.photos/seed/potato-crop/600/400",
-      "imageHint": "potato harvest"
+      "description": "Large brown potatoes in a sack",
+      "imageUrl": "https://picsum.photos/seed/potato/600/400",
+      "imageHint": "potato bag"
     },
     {
       "id": "honey",
-      "description": "Organic Honey",
-      "imageUrl": "https://picsum.photos/seed/honey-harvest/600/400",
-      "imageHint": "honeycomb bee"
+      "description": "Golden jars of fresh natural honey",
+      "imageUrl": "https://picsum.photos/seed/honey/600/400",
+      "imageHint": "honey jar"
     },
     {
       "id": "cauliflower",
-      "description": "Fresh Cauliflower",
-      "imageUrl": "https://picsum.photos/seed/cauli-crop/600/400",
-      "imageHint": "cauliflower vegetable"
+      "description": "Fresh cauliflower heads in a market stall",
+      "imageUrl": "https://picsum.photos/seed/cauli/600/400",
+      "imageHint": "cauliflower head"
     }
   ]
 }
