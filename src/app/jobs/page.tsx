@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Search, 
   LogOut, 
@@ -17,8 +17,23 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function JobPortalPage() {
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedIn(loginStatus);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('username');
+    router.push('/login');
+  };
+
   return (
     <div className="bg-[#f6f8f6] dark:bg-[#131f14] min-h-screen text-slate-900 dark:text-slate-100 font-body">
       {/* Top Navigation Bar */}
@@ -45,10 +60,21 @@ export default function JobPortalPage() {
               placeholder="Search panchayat jobs..." 
             />
           </div>
-          <Button className="bg-[#1c5f20] hover:bg-green-800 text-white px-5 py-2 rounded-xl text-sm font-bold transition-all flex items-center gap-2 h-10">
-            <LogOut size={18} />
-            Sign Out
-          </Button>
+          {isLoggedIn ? (
+            <Button 
+              onClick={handleLogout}
+              className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-xl text-sm font-bold transition-all flex items-center gap-2 h-10"
+            >
+              <LogOut size={18} />
+              Sign Out
+            </Button>
+          ) : (
+            <Link href="/login">
+              <Button className="bg-[#1c5f20] hover:bg-green-800 text-white px-5 py-2 rounded-xl text-sm font-bold transition-all flex items-center h-10">
+                Login
+              </Button>
+            </Link>
+          )}
           <div className="size-10 rounded-full bg-slate-200 dark:bg-slate-700 border-2 border-white dark:border-slate-800 overflow-hidden">
             <img 
               className="w-full h-full object-cover" 
@@ -90,22 +116,6 @@ export default function JobPortalPage() {
               <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors">
                 <Landmark size={18} className="text-slate-400" />
                 <span className="text-sm font-medium">Govt Schemes</span>
-              </div>
-            </div>
-
-            {/* Wage Slider Placeholder */}
-            <div className="mb-8">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-4">Daily Wage (₹)</h3>
-              <div className="px-2">
-                <div className="relative h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full mb-8">
-                  <div className="absolute inset-y-0 left-[20%] right-[30%] bg-[#1c5f20] rounded-full"></div>
-                  <div className="absolute left-[20%] -top-2 size-5 rounded-full bg-[#1c5f20] border-4 border-white shadow flex flex-col items-center">
-                    <span className="absolute top-6 text-xs font-bold">300</span>
-                  </div>
-                  <div className="absolute left-[70%] -top-2 size-5 rounded-full bg-[#1c5f20] border-4 border-white shadow flex flex-col items-center">
-                    <span className="absolute top-6 text-xs font-bold">1200</span>
-                  </div>
-                </div>
               </div>
             </div>
 

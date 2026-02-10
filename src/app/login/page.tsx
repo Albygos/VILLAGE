@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Sprout, Lock, User, ArrowRight, AlertCircle } from 'lucide-react';
@@ -22,12 +22,14 @@ export default function LoginPage() {
     setIsLoading(true);
     setError('');
 
-    // Demo credentials check
+    // Demo credentials check: village / 123456
     setTimeout(() => {
-      if (username === 'demo' && password === 'password') {
+      if (username === 'village' && password === '123456') {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('username', username);
         router.push('/');
       } else {
-        setError('Invalid username or password. Try demo/password.');
+        setError('Invalid username or password. Try village/123456.');
         setIsLoading(false);
       }
     }, 800);
@@ -66,7 +68,7 @@ export default function LoginPage() {
                 <Input 
                   id="username" 
                   type="text" 
-                  placeholder="demo" 
+                  placeholder="village" 
                   className="pl-10 h-12 rounded-xl border-primary/10 focus:ring-primary"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -91,14 +93,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" className="size-4 rounded border-primary/20 text-primary focus:ring-primary" />
-                <span className="text-sm text-muted-foreground">Remember me</span>
-              </label>
-              <button type="button" className="text-sm font-bold text-primary hover:underline">Forgot password?</button>
-            </div>
-
             <Button 
               type="submit" 
               className="w-full h-12 rounded-xl bg-primary text-white font-black text-lg hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all gap-2"
@@ -110,12 +104,9 @@ export default function LoginPage() {
           </form>
         </CardContent>
         <CardFooter className="flex flex-col gap-4 pb-8 pt-4 px-8 border-t border-primary/5 mt-4">
-          <p className="text-sm text-center text-muted-foreground">
-            Don't have an account? <button className="text-primary font-bold hover:underline">Register your UID</button>
-          </p>
           <div className="bg-slate-50 dark:bg-primary/5 p-3 rounded-xl border border-primary/10 w-full">
             <p className="text-[10px] font-bold text-primary uppercase text-center mb-1">Demo Access</p>
-            <p className="text-[11px] text-center text-slate-500">Username: <span className="font-bold text-slate-700 dark:text-slate-300">demo</span> | Password: <span className="font-bold text-slate-700 dark:text-slate-300">password</span></p>
+            <p className="text-[11px] text-center text-slate-500">Username: <span className="font-bold text-slate-700 dark:text-slate-300">village</span> | Password: <span className="font-bold text-slate-700 dark:text-slate-300">123456</span></p>
           </div>
         </CardFooter>
       </Card>

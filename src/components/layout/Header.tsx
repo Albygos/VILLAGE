@@ -1,6 +1,9 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Sprout, Globe, ChevronDown } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Sprout, Globe, ChevronDown, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -10,6 +13,21 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function Header() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedIn(loginStatus);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('username');
+    setIsLoggedIn(false);
+    router.push('/login');
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white/80 dark:bg-background/80 backdrop-blur-md border-b border-solid border-primary/10 px-6 md:px-20 lg:px-40 py-4">
       <div className="max-w-[1200px] mx-auto flex items-center justify-between">
@@ -26,7 +44,7 @@ export function Header() {
           <nav className="hidden md:flex items-center gap-8">
             <Link href="/" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Home</Link>
             <Link href="/jobs" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Services</Link>
-            <Link href="#" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Schemes</Link>
+            <Link href="/marketplace" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Marketplace</Link>
             <Link href="#" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Contact</Link>
           </nav>
         </div>
@@ -45,11 +63,21 @@ export function Header() {
               <DropdownMenuItem className="cursor-pointer">తెలుగు</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Link href="/login">
-            <Button className="rounded-xl h-10 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
-              Login
+          {isLoggedIn ? (
+            <Button 
+              onClick={handleLogout}
+              className="rounded-xl h-10 px-6 bg-red-600 text-white text-sm font-bold shadow-lg shadow-red-600/20 hover:bg-red-700 transition-all flex items-center gap-2"
+            >
+              <LogOut size={16} />
+              Log Out
             </Button>
-          </Link>
+          ) : (
+            <Link href="/login">
+              <Button className="rounded-xl h-10 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+                Login
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
     </header>

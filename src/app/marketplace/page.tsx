@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Search, 
   Bell, 
@@ -11,15 +11,31 @@ import {
   User, 
   ChevronLeft, 
   ChevronRight,
-  Leaf
+  Leaf,
+  LogOut
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function MarketplacePage() {
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedIn(loginStatus);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('username');
+    router.push('/login');
+  };
+
   const getProductImage = (id: string) => {
     const found = PlaceHolderImages.find(img => img.id === id);
     return {
@@ -140,6 +156,21 @@ export default function MarketplacePage() {
               <button className="flex items-center justify-center rounded-xl h-10 w-10 bg-[#e9f1ea] dark:bg-[#1c5f20]/10 text-[#101911] dark:text-white">
                 <Bell size={20} />
               </button>
+              {isLoggedIn ? (
+                <Button 
+                  onClick={handleLogout}
+                  className="h-10 px-4 bg-red-600 hover:bg-red-700 text-white rounded-xl text-sm font-bold transition-all flex items-center gap-2"
+                >
+                  <LogOut size={16} />
+                  Sign Out
+                </Button>
+              ) : (
+                <Link href="/login">
+                  <Button className="h-10 px-4 bg-[#1c5f20] text-white rounded-xl text-sm font-bold shadow-lg shadow-[#1c5f20]/20 hover:bg-[#1c5f20]/90 transition-all">
+                    Login
+                  </Button>
+                </Link>
+              )}
               <div className="size-10 rounded-full border-2 border-[#1c5f20]/20 overflow-hidden relative">
                 <Image 
                   src="https://picsum.photos/seed/user/100/100" 
