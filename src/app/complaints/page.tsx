@@ -7,13 +7,10 @@ import {
   Hammer, 
   Lightbulb, 
   Trash2, 
-  Info, 
   ArrowLeft, 
   ArrowRight,
   CheckCircle2,
   Bell,
-  ChevronDown,
-  Circle,
   AlertCircle,
   FileText,
   MapPin,
@@ -88,9 +85,8 @@ export default function ComplaintsPage() {
   const handleNext = () => {
     if (step < 4) setStep(step + 1);
     else {
-      // Logic for final submission
       alert('Complaint submitted successfully!');
-      router.push('/');
+      router.push('/my-complaints');
     }
   };
 
@@ -116,7 +112,7 @@ export default function ComplaintsPage() {
         <div className="flex flex-1 justify-end gap-8 items-center">
           <nav className="hidden md:flex items-center gap-9">
             <Link className="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="/">Home</Link>
-            <Link className="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">My Complaints</Link>
+            <Link className="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="/my-complaints">My Complaints</Link>
             <Link className="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="/jobs">Services</Link>
             <Link className="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="/complaints">Complaint</Link>
           </nav>

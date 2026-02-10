@@ -25,7 +25,6 @@ export function Header() {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
     setIsLoggedIn(false);
-    // Use window.location for a full refresh to ensure all components sync the logged-in state
     window.location.href = '/login';
   };
 
@@ -44,6 +43,7 @@ export function Header() {
           </Link>
           <nav className="hidden md:flex items-center gap-8">
             <Link href="/" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Home</Link>
+            <Link href="/my-complaints" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">My Complaints</Link>
             <Link href="/jobs" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Services</Link>
             <Link href="/marketplace" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Marketplace</Link>
             <Link href="/complaints" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Complaint</Link>
