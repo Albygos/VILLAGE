@@ -21,19 +21,24 @@ import { useRouter } from 'next/navigation';
 
 export default function JobPortalPage() {
   const router = useRouter();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
-    setIsLoggedIn(loginStatus);
-  }, []);
+    if (!loginStatus) {
+      router.push('/login');
+    } else {
+      setIsLoading(false);
+    }
+  }, [router]);
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
-    setIsLoggedIn(false);
     window.location.href = '/login';
   };
+
+  if (isLoading) return null;
 
   return (
     <div className="bg-[#f6f8f6] dark:bg-[#131f14] min-h-screen text-slate-900 dark:text-slate-100 font-body">
@@ -61,21 +66,13 @@ export default function JobPortalPage() {
               placeholder="Search panchayat jobs..." 
             />
           </div>
-          {isLoggedIn ? (
-            <Button 
-              onClick={handleLogout}
-              className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-xl text-sm font-bold transition-all flex items-center gap-2 h-10"
-            >
-              <LogOut size={18} />
-              Log Out
-            </Button>
-          ) : (
-            <Link href="/login">
-              <Button className="bg-[#1c5f20] hover:bg-green-800 text-white px-5 py-2 rounded-xl text-sm font-bold transition-all flex items-center h-10">
-                Login
-              </Button>
-            </Link>
-          )}
+          <Button 
+            onClick={handleLogout}
+            className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-xl text-sm font-bold transition-all flex items-center gap-2 h-10"
+          >
+            <LogOut size={18} />
+            Log Out
+          </Button>
           <div className="size-10 rounded-full bg-slate-200 dark:bg-slate-700 border-2 border-white dark:border-slate-800 overflow-hidden">
             <img 
               className="w-full h-full object-cover" 

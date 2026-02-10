@@ -27,9 +27,11 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
+import { useRouter } from 'next/navigation';
 
 export default function ComplaintsPage() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
   const [step, setStep] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState('water');
   const [formData, setFormData] = useState({
@@ -41,15 +43,20 @@ export default function ComplaintsPage() {
 
   useEffect(() => {
     const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
-    setIsLoggedIn(loginStatus);
-  }, []);
+    if (!loginStatus) {
+      router.push('/login');
+    } else {
+      setIsLoading(false);
+    }
+  }, [router]);
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
-    setIsLoggedIn(false);
     window.location.href = '/login';
   };
+
+  if (isLoading) return null;
 
   const categories = [
     {
@@ -111,21 +118,13 @@ export default function ComplaintsPage() {
           <button className="flex cursor-pointer items-center justify-center rounded-full size-10 bg-primary/10 text-primary hover:bg-primary/20 transition-all">
             <Bell size={20} />
           </button>
-          {isLoggedIn ? (
-            <Button 
-              onClick={handleLogout}
-              className="rounded-full h-10 px-6 bg-red-600 text-white text-sm font-bold shadow-lg shadow-red-600/20 hover:bg-red-700 transition-all flex items-center gap-2"
-            >
-              <LogOut size={16} />
-              Log Out
-            </Button>
-          ) : (
-            <Link href="/login">
-              <Button className="rounded-full h-10 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
-                Login
-              </Button>
-            </Link>
-          )}
+          <Button 
+            onClick={handleLogout}
+            className="rounded-full h-10 px-6 bg-red-600 text-white text-sm font-bold shadow-lg shadow-red-600/20 hover:bg-red-700 transition-all flex items-center gap-2"
+          >
+            <LogOut size={16} />
+            Log Out
+          </Button>
           <div className="size-10 rounded-full border-2 border-primary/20 overflow-hidden relative">
             <img 
               className="w-full h-full object-cover" 
@@ -327,23 +326,6 @@ export default function ComplaintsPage() {
                 </div>
               </div>
             )}
-
-            {step === 1 && (
-              <div className="mt-12 bg-slate-50 dark:bg-slate-800/30 p-6 rounded-xl border border-dashed border-primary/20">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                  <div className="flex items-center gap-4">
-                    <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                      <Info size={24} />
-                    </div>
-                    <div>
-                      <h4 className="text-slate-900 dark:text-white font-bold">Need to report something else?</h4>
-                      <p className="text-slate-500 dark:text-slate-400 text-sm">You can provide details about any other issue in the next step.</p>
-                    </div>
-                  </div>
-                  <button className="text-primary font-bold hover:underline decoration-2 underline-offset-4">Talk to an Agent</button>
-                </div>
-              </div>
-            )}
           </div>
 
           <div className="flex items-center justify-between p-8 border-t border-primary/10 bg-slate-50/50 dark:bg-background-dark/50">
@@ -378,10 +360,6 @@ export default function ComplaintsPage() {
 
       <footer className="py-10 text-center">
         <p className="text-slate-400 dark:text-slate-600 text-sm font-medium">Digital India Initiative • Panchayat Portal © 2024</p>
-        <div className="flex justify-center gap-4 mt-4 opacity-50">
-          <img className="h-8 grayscale" src="https://picsum.photos/seed/gov1/100/100" alt="Emblem" />
-          <img className="h-8 grayscale" src="https://picsum.photos/seed/gov2/100/100" alt="Digital India" />
-        </div>
       </footer>
     </div>
   );
