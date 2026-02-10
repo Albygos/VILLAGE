@@ -6,22 +6,21 @@ import { useRouter } from 'next/navigation';
 import { 
   Search, 
   PlusCircle, 
-  AccountBalance, 
-  Description, 
-  PendingActions, 
-  TaskAlt, 
-  ExpandMore, 
-  CheckCircle, 
-  ArrowForward, 
-  Engineering, 
-  Person, 
+  Landmark, 
+  FileText, 
+  Clock, 
+  CheckCircle2, 
+  ChevronDown, 
+  ArrowRight, 
+  Construction, 
+  User, 
   Check, 
-  Verified, 
-  Warning, 
-  ImageNotSupported, 
-  ContactSupport, 
-  Call, 
-  Chat,
+  BadgeCheck, 
+  AlertTriangle, 
+  ImageOff, 
+  HelpCircle, 
+  Phone, 
+  MessageSquare,
   LogOut
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -56,7 +55,7 @@ export default function MyComplaintsPage() {
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="size-10 bg-primary rounded-lg flex items-center justify-center text-white shadow-lg shadow-primary/20">
-                <AccountBalance size={24} />
+                <Landmark size={24} />
               </div>
               <div>
                 <h2 className="text-primary dark:text-green-400 text-lg font-bold leading-tight tracking-tight">Digital Panchayat</h2>
@@ -117,21 +116,21 @@ export default function MyComplaintsPage() {
           <div className="flex flex-col gap-1 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm transition-all hover:shadow-md">
             <div className="flex items-center justify-between mb-2">
               <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Filed</p>
-              <Description size={20} className="text-slate-400" />
+              <FileText size={20} className="text-slate-400" />
             </div>
             <p className="text-slate-900 dark:text-white tracking-tight text-3xl font-bold">12</p>
           </div>
           <div className="flex flex-col gap-1 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm border-l-4 border-l-amber-500 transition-all hover:shadow-md">
             <div className="flex items-center justify-between mb-2">
               <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">In Progress</p>
-              <PendingActions size={20} className="text-amber-500" />
+              <Clock size={20} className="text-amber-500" />
             </div>
             <p className="text-slate-900 dark:text-white tracking-tight text-3xl font-bold">04</p>
           </div>
           <div className="flex flex-col gap-1 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm border-l-4 border-l-primary transition-all hover:shadow-md">
             <div className="flex items-center justify-between mb-2">
               <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">Resolved</p>
-              <TaskAlt size={20} className="text-primary" />
+              <CheckCircle2 size={20} className="text-primary" />
             </div>
             <p className="text-slate-900 dark:text-white tracking-tight text-3xl font-bold">08</p>
           </div>
@@ -148,13 +147,13 @@ export default function MyComplaintsPage() {
               All
             </Button>
             <Button variant="outline" className="h-9 shrink-0 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-1">
-              Submitted <ExpandMore size={16} />
+              Submitted <ChevronDown size={16} />
             </Button>
             <Button variant="outline" className="h-9 shrink-0 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-1">
-              In Progress <ExpandMore size={16} />
+              In Progress <ChevronDown size={16} />
             </Button>
             <Button variant="outline" className="h-9 shrink-0 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-1">
-              Resolved <ExpandMore size={16} />
+              Resolved <ChevronDown size={16} />
             </Button>
           </div>
         </div>
@@ -182,7 +181,7 @@ export default function MyComplaintsPage() {
                       <span className="text-slate-400 text-xs font-medium">#WP-1024 • Jan 12, 2024</span>
                     </div>
                     <button className="text-primary hover:text-green-800 text-sm font-bold flex items-center gap-1 transition-colors">
-                      View Details <ArrowForward size={14} />
+                      View Details <ArrowRight size={14} />
                     </button>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white">Repairing Street Lights - Main Road Ward 4</h3>
@@ -203,13 +202,13 @@ export default function MyComplaintsPage() {
                     </div>
                     <div className="flex flex-col items-center gap-2 relative z-10 bg-white dark:bg-slate-900 px-2">
                       <div className="size-8 rounded-full border-2 border-primary bg-white flex items-center justify-center text-primary">
-                        <Person size={16} />
+                        <User size={16} />
                       </div>
                       <span className="text-[10px] font-bold uppercase text-primary">Assigned</span>
                     </div>
                     <div className="flex flex-col items-center gap-2 relative z-10 bg-white dark:bg-slate-900 px-2 opacity-40">
                       <div className="size-8 rounded-full border-2 border-slate-300 bg-white flex items-center justify-center text-slate-400">
-                        <Engineering size={16} />
+                        <Construction size={16} />
                       </div>
                       <span className="text-[10px] font-bold uppercase">Working</span>
                     </div>
@@ -238,13 +237,13 @@ export default function MyComplaintsPage() {
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                     <div className="flex items-center gap-2">
                       <span className="bg-primary/10 text-primary dark:bg-primary/20 dark:text-green-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
-                        <CheckCircle size={12} />
+                        <CheckCircle2 size={12} />
                         Resolved
                       </span>
                       <span className="text-slate-400 text-xs font-medium">#WP-0988 • Jan 05, 2024</span>
                     </div>
                     <button className="text-primary hover:text-green-800 text-sm font-bold flex items-center gap-1 transition-colors">
-                      View Details <ArrowForward size={14} />
+                      View Details <ArrowRight size={14} />
                     </button>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white">Water Pipeline Leakage near Panchayat Office</h3>
@@ -253,7 +252,7 @@ export default function MyComplaintsPage() {
                 {/* Mini Summary */}
                 <div className="mt-4 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg flex items-center gap-3">
                   <div className="size-8 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
-                    <Verified size={18} />
+                    <BadgeCheck size={18} />
                   </div>
                   <div className="text-xs">
                     <p className="font-bold text-slate-900 dark:text-white">Resolved by Officer Amit Singh</p>
@@ -268,14 +267,14 @@ export default function MyComplaintsPage() {
           <div className="bg-white dark:bg-slate-900 rounded-xl border border-red-100 dark:border-red-900/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
             <div className="p-4 md:p-6 flex flex-col lg:flex-row gap-6">
               <div className="w-full lg:w-48 h-32 rounded-lg bg-slate-200 dark:bg-slate-800 flex items-center justify-center shrink-0">
-                <ImageNotSupported size={32} className="text-slate-400" />
+                <ImageOff size={32} className="text-slate-400" />
               </div>
               <div className="flex-1 flex flex-col justify-between">
                 <div>
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                     <div className="flex items-center gap-2">
                       <span className="bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
-                        <Warning size={12} />
+                        <AlertTriangle size={12} />
                         Action Needed
                       </span>
                       <span className="text-slate-400 text-xs font-medium">#WP-1105 • Jan 14, 2024</span>
@@ -295,18 +294,18 @@ export default function MyComplaintsPage() {
         {/* Help Section */}
         <div className="mt-12 p-8 bg-primary/5 dark:bg-primary/10 rounded-2xl border-2 border-dashed border-primary/20 flex flex-col md:flex-row items-center gap-8">
           <div className="size-20 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
-            <ContactSupport size={40} />
+            <HelpCircle size={40} />
           </div>
           <div className="text-center md:text-left">
             <h3 className="text-xl font-bold text-slate-900 dark:text-white">Need help with your complaint?</h3>
             <p className="text-slate-600 dark:text-slate-400 mt-1 max-w-lg">If you are facing issues tracking your request or need technical support, you can call our village helpdesk or visit the Panchayat office.</p>
             <div className="flex flex-wrap justify-center md:justify-start gap-6 mt-6">
               <a className="flex items-center gap-2 text-primary font-bold hover:underline transition-all" href="tel:1800-123-456">
-                <Call size={18} />
+                <Phone size={18} />
                 1800-123-456
               </a>
               <a className="flex items-center gap-2 text-primary font-bold hover:underline transition-all" href="#">
-                <Chat size={18} />
+                <MessageSquare size={18} />
                 Chat with Sahayak
               </a>
             </div>
@@ -317,7 +316,7 @@ export default function MyComplaintsPage() {
       <footer className="mt-12 py-10 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
         <div className="max-w-[1200px] mx-auto px-4 md:px-10 lg:px-40 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <AccountBalance size={20} className="text-primary" />
+            <Landmark size={20} className="text-primary" />
             <p className="text-sm font-bold text-slate-600 dark:text-slate-400">© 2024 Digital Panchayat Portal</p>
           </div>
           <div className="flex gap-6">
