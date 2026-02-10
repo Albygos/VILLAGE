@@ -45,9 +45,11 @@ export function Header() {
               <DropdownMenuItem className="cursor-pointer">తెలుగు</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button className="rounded-xl h-10 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
-            Login
-          </Button>
+          <Link href="/login">
+            <Button className="rounded-xl h-10 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+              Login
+            </Button>
+          </Link>
         </div>
       </div>
     </header>
