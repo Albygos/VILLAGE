@@ -31,7 +31,8 @@ export default function JobPortalPage() {
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
-    router.push('/login');
+    setIsLoggedIn(false);
+    window.location.href = '/login';
   };
 
   return (
@@ -66,7 +67,7 @@ export default function JobPortalPage() {
               className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-xl text-sm font-bold transition-all flex items-center gap-2 h-10"
             >
               <LogOut size={18} />
-              Sign Out
+              Log Out
             </Button>
           ) : (
             <Link href="/login">

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   Droplets, 
@@ -18,7 +18,8 @@ import {
   FileText,
   MapPin,
   Camera,
-  CheckCircle
+  CheckCircle,
+  LogOut
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -28,6 +29,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Label } from '@/components/ui/label';
 
 export default function ComplaintsPage() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [step, setStep] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState('water');
   const [formData, setFormData] = useState({
@@ -36,6 +38,18 @@ export default function ComplaintsPage() {
     urgency: 'medium',
     location: '',
   });
+
+  useEffect(() => {
+    const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedIn(loginStatus);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('username');
+    setIsLoggedIn(false);
+    window.location.href = '/login';
+  };
 
   const categories = [
     {
@@ -97,6 +111,21 @@ export default function ComplaintsPage() {
           <button className="flex cursor-pointer items-center justify-center rounded-full size-10 bg-primary/10 text-primary hover:bg-primary/20 transition-all">
             <Bell size={20} />
           </button>
+          {isLoggedIn ? (
+            <Button 
+              onClick={handleLogout}
+              className="rounded-full h-10 px-6 bg-red-600 text-white text-sm font-bold shadow-lg shadow-red-600/20 hover:bg-red-700 transition-all flex items-center gap-2"
+            >
+              <LogOut size={16} />
+              Log Out
+            </Button>
+          ) : (
+            <Link href="/login">
+              <Button className="rounded-full h-10 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+                Login
+              </Button>
+            </Link>
+          )}
           <div className="size-10 rounded-full border-2 border-primary/20 overflow-hidden relative">
             <img 
               className="w-full h-full object-cover" 

@@ -33,7 +33,8 @@ export default function MarketplacePage() {
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
-    router.push('/login');
+    setIsLoggedIn(false);
+    window.location.href = '/login';
   };
 
   const getProductImage = (id: string) => {
@@ -162,7 +163,7 @@ export default function MarketplacePage() {
                   className="h-10 px-4 bg-red-600 hover:bg-red-700 text-white rounded-xl text-sm font-bold transition-all flex items-center gap-2"
                 >
                   <LogOut size={16} />
-                  Sign Out
+                  Log Out
                 </Button>
               ) : (
                 <Link href="/login">

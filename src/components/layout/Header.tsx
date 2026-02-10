@@ -25,7 +25,8 @@ export function Header() {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
     setIsLoggedIn(false);
-    router.push('/login');
+    // Use window.location for a full refresh to ensure all components sync the logged-out state
+    window.location.href = '/login';
   };
 
   return (
