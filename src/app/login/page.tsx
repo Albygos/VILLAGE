@@ -7,7 +7,7 @@ import { Sprout, Lock, User, ArrowRight, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
 export default function LoginPage() {
@@ -16,6 +16,13 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (isLoggedIn) {
+      router.push('/');
+    }
+  }, [router]);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,9 +34,10 @@ export default function LoginPage() {
       if (username === 'village' && password === '123456') {
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('username', username);
-        router.push('/');
+        // Use window.location for a full refresh to ensure all components sync the logged-in state
+        window.location.href = '/';
       } else {
-        setError('Invalid username or password. Try village/123456.');
+        setError('Invalid username or password.');
         setIsLoading(false);
       }
     }, 800);
@@ -68,7 +76,7 @@ export default function LoginPage() {
                 <Input 
                   id="username" 
                   type="text" 
-                  placeholder="village" 
+                  placeholder="Enter username" 
                   className="pl-10 h-12 rounded-xl border-primary/10 focus:ring-primary"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -103,12 +111,6 @@ export default function LoginPage() {
             </Button>
           </form>
         </CardContent>
-        <CardFooter className="flex flex-col gap-4 pb-8 pt-4 px-8 border-t border-primary/5 mt-4">
-          <div className="bg-slate-50 dark:bg-primary/5 p-3 rounded-xl border border-primary/10 w-full">
-            <p className="text-[10px] font-bold text-primary uppercase text-center mb-1">Demo Access</p>
-            <p className="text-[11px] text-center text-slate-500">Username: <span className="font-bold text-slate-700 dark:text-slate-300">village</span> | Password: <span className="font-bold text-slate-700 dark:text-slate-300">123456</span></p>
-          </div>
-        </CardFooter>
       </Card>
 
       <footer className="mt-8 text-center">
