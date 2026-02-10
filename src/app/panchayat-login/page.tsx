@@ -34,7 +34,8 @@ export default function PanchayatLoginPage() {
       if (username === 'admin' && password === '123456') {
         localStorage.setItem('isAdminLoggedIn', 'true');
         localStorage.setItem('adminUsername', username);
-        localStorage.setItem('isLoggedIn', 'true'); // Also mark as logged in for general access
+        // Important: admin also gets standard logged in access
+        localStorage.setItem('isLoggedIn', 'true'); 
         window.location.href = '/admin-dashboard';
       } else {
         setError('Invalid admin credentials.');
