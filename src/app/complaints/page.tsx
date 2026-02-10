@@ -42,7 +42,7 @@ export default function ComplaintsPage() {
   });
 
   useEffect(() => {
-    const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
+    const loginStatus = typeof window !== 'undefined' && localStorage.getItem('isLoggedIn') === 'true';
     if (!loginStatus) {
       router.push('/login');
     } else {
@@ -87,6 +87,11 @@ export default function ComplaintsPage() {
 
   const handleNext = () => {
     if (step < 4) setStep(step + 1);
+    else {
+      // Logic for final submission
+      alert('Complaint submitted successfully!');
+      router.push('/');
+    }
   };
 
   const handleBack = () => {
@@ -113,7 +118,7 @@ export default function ComplaintsPage() {
             <Link className="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="/">Home</Link>
             <Link className="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">My Complaints</Link>
             <Link className="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="/jobs">Services</Link>
-            <Link className="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Contact</Link>
+            <Link className="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="/complaints">Complaint</Link>
           </nav>
           <button className="flex cursor-pointer items-center justify-center rounded-full size-10 bg-primary/10 text-primary hover:bg-primary/20 transition-all">
             <Bell size={20} />

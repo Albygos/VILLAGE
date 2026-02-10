@@ -17,7 +17,7 @@ export function Header() {
   const router = useRouter();
 
   useEffect(() => {
-    const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
+    const loginStatus = typeof window !== 'undefined' && localStorage.getItem('isLoggedIn') === 'true';
     setIsLoggedIn(loginStatus);
   }, []);
 
@@ -25,7 +25,7 @@ export function Header() {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
     setIsLoggedIn(false);
-    // Use window.location for a full refresh to ensure all components sync the logged-out state
+    // Use window.location for a full refresh to ensure all components sync the logged-in state
     window.location.href = '/login';
   };
 
@@ -46,7 +46,7 @@ export function Header() {
             <Link href="/" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Home</Link>
             <Link href="/jobs" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Services</Link>
             <Link href="/marketplace" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Marketplace</Link>
-            <Link href="#" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Contact</Link>
+            <Link href="/complaints" className="text-foreground/80 text-sm font-semibold hover:text-primary transition-colors">Complaint</Link>
           </nav>
         </div>
         <div className="flex items-center gap-4">
